@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🌐 GLOBAL FUTURISTIC BACKGROUND -->
+<div class="neural-bg"></div>
+
+<div class="symbol q1">?</div>
+<div class="symbol q2">π</div>
+<div class="symbol q3">∑</div>
+<div class="symbol q4">λ</div>
+
+<div class="wrapper">
+
+<h1 class="heading">Quiz Performance</h1>
+
+<div id="scoreBox"></div>
+
+<button class="btn" onclick="restartQuiz()" 
+style="max-width:250px;margin:0 auto 30px auto;display:block;">
+Restart Quiz
+</button>
+
+<div id="reportBox"></div>
+
+</div>
+
+<script>
+
+let correct = Number(localStorage.correct)
+let total = Number(localStorage.total)
+
+document.documentElement.style
+.setProperty('--score', (correct/total)*100 )
+
+scoreBox.innerHTML = `
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+margin-bottom:40px;
+">
+
+<div class="scoreCircle">
+   <span>${correct}/${total}</span>
+</div>
+
+<div style="
+margin-top:12px;
+font-size:20px;
+opacity:0.8;
+">
+Performance Score
+</div>
+
+</div>
+`
+
+let report = JSON.parse(localStorage.report)
+
+report.forEach((q,i)=>{
+
+    let icon = q.status === "correct"
+        ? "✅"
+        : "❌"
+
+    let color = q.status === "correct"
+        ? "#22c55e"
+        : "#ef4444"
+
+    let div = document.createElement("div")
+    div.className="result"
+
+    div.innerHTML = `
+    <h3>${i+1}. ${q.question}</h3>
+
+    <p>Your Answer :
+    <span style="color:${color}">
+    ${q.attempted}
+    </span> ${icon}
+    </p>
+
+    <p>Correct Answer :
+    <b style="color:#4ade80">
+    ${q.correct}
+    </b>
+    </p>
+    `
+
+    reportBox.appendChild(div)
+})
+
+function restartQuiz(){
+    location.href = "quiz.html"
+}
+
+</script>
+
+<!-- ⭐ CURSOR GLOW -->
+<script>
+let glow = document.createElement("div")
+glow.className = "cursorGlow"
+document.body.appendChild(glow)
+
+document.addEventListener("mousemove",e=>{
+    glow.style.left = e.clientX+"px"
+    glow.style.top = e.clientY+"px"
+})
+</script>
+
+</body>
+</html>

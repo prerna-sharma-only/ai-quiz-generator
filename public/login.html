@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="style.css">
+
+<h2>Student Login</h2>
+
+<input id="email" placeholder="Email"><br>
+<input id="pass" placeholder="Password"><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+async function login(){
+
+    const res = await fetch("/login",{
+        method:"POST",
+        headers:{ "Content-Type":"application/json"},
+        body:JSON.stringify({
+            email:email.value,
+            password:pass.value
+        })
+    })
+
+    const data = await res.json()
+
+    if(data.success){
+        location.href="index.html"
+    }else{
+        alert("Invalid Login")
+    }
+}
+</script>

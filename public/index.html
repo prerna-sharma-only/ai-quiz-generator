@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ⭐ GLOBAL FUTURISTIC BACKGROUND -->
+<div class="neural-bg"></div>
+
+<div class="symbol q1">?</div>
+<div class="symbol q2">π</div>
+<div class="symbol q3">∑</div>
+<div class="symbol q4">λ</div>
+
+<div class="wrapper">
+
+<h1 class="heading">AI Quiz Generator</h1>
+
+<div class="form-card">
+
+<select id="topic">
+<option value="">Select Topic</option>
+<option>Java OOPS</option>
+<option>Python Functions</option>
+<option>C Programming</option>
+<option>C++ STL</option>
+<option>Data Structures</option>
+<option>DBMS</option>
+<option>Operating System</option>
+<option>Computer Networks</option>
+<option>Machine Learning</option>
+<option>Artificial Intelligence</option>
+<option>Custom</option>
+</select>
+
+<input id="customTopic" placeholder="Enter Custom Topic" style="display:none">
+<input id="num" placeholder="Number of Questions">
+<input id="time" placeholder="Time in seconds">
+
+<button class="btn" onclick="createQuiz()">Generate Quiz</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* ⭐ dropdown custom topic logic */
+topic.addEventListener("change",()=>{
+   if(topic.value==="Custom"){
+      customTopic.style.display="block"
+   }else{
+      customTopic.style.display="none"
+   }
+})
+
+/* ⭐ generate quiz */
+async function createQuiz(){
+
+    let finalTopic =
+    topic.value === "Custom"
+    ? customTopic.value
+    : topic.value
+
+    const res = await fetch("/generate",{
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body:JSON.stringify({
+            topic: finalTopic,
+            num: num.value,
+            time: time.value
+        })
+    });
+
+    const data = await res.json();
+
+    localStorage.quiz = data.quiz;
+    localStorage.time = data.time;
+
+    location.href="quiz.html";
+}
+
+</script>
+
+<!-- ⭐ cursor glow effect -->
+<script>
+let glow = document.createElement("div")
+glow.className = "cursorGlow"
+document.body.appendChild(glow)
+
+document.addEventListener("mousemove",e=>{
+    glow.style.left = e.clientX+"px"
+    glow.style.top = e.clientY+"px"
+})
+</script>
+
+</body>
+</html>

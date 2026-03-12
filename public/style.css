@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#020617;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* ===== TECH PARTICLE BACKGROUND ===== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle, #22c55e66 1.5px, transparent 2.5px),
+        radial-gradient(circle, #4ade8066 1.5px, transparent 2.5px);
+    background-size:120px 120px, 160px 160px;
+    animation:particleMove 7s linear infinite;
+    opacity:0.6;
+    z-index:-3;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:900px;
+    height:900px;
+    background:radial-gradient(circle,#22c55e33,transparent 60%);
+    top:-250px;
+    left:-250px;
+    filter:blur(100px);
+    animation:glowMove 6s infinite alternate ease-in-out;
+    z-index:-2;
+}
+
+@keyframes particleMove{
+    from{ transform:translateY(0)}
+    to{ transform:translateY(-220px)}
+}
+
+@keyframes glowMove{
+    from{ transform:translate(0,0)}
+    to{ transform:translate(260px,160px)}
+}
+
+/* ===== NEURAL GRID ===== */
+
+.neural-bg{
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(34,197,94,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,197,94,0.08) 1px, transparent 1px);
+    background-size:120px 120px;
+    animation:gridMove 12s linear infinite;
+    z-index:-4;
+}
+
+@keyframes gridMove{
+    from{ transform:translateY(0)}
+    to{ transform:translateY(-120px)}
+}
+
+/* ===== FLOATING QUIZ SYMBOLS ===== */
+
+.symbol{
+    position:fixed;
+    font-size:30px;
+    color:#22c55e;
+    opacity:0.18;
+    animation:floatSym 12s linear infinite;
+    z-index:-1;
+}
+
+.symbol.q1{ left:8%; top:25% }
+.symbol.q2{ right:10%; top:60% }
+.symbol.q3{ left:45%; bottom:8% }
+.symbol.q4{ right:20%; top:12% }
+
+@keyframes floatSym{
+    from{ transform:translateY(0) rotate(0)}
+    to{ transform:translateY(-260px) rotate(360deg)}
+}
+
+/* ===== LAYOUT ===== */
+
+.wrapper{
+    max-width:950px;
+    margin:auto;
+    padding:60px 25px;
+}
+
+.heading{
+    text-align:center;
+    font-size:38px;
+    font-weight:600;
+    margin-bottom:40px;
+}
+
+/* ===== GLASS CARDS ===== */
+
+.form-card,
+.qcard,
+.result{
+    background:rgba(15,23,42,0.65);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(34,197,94,0.2);
+    box-shadow:0 0 18px rgba(34,197,94,0.25);
+    border-radius:18px;
+}
+
+/* form */
+.form-card{
+    padding:30px;
+    margin-bottom:40px;
+}
+
+.form-card input{
+    width:100%;
+    padding:15px;
+    margin-bottom:14px;
+    border:none;
+    border-radius:10px;
+    background:#020617;
+    color:white;
+}
+
+.form-card input:focus{
+    outline:none;
+    box-shadow:0 0 0 2px #22c55e;
+}
+/* ⭐ topic dropdown same as input style */
+
+.form-card select{
+    width:100%;
+    padding:15px;
+    margin-bottom:14px;
+    border:none;
+    border-radius:10px;
+    background:#020617;
+    color:white;
+    font-size:15px;
+    appearance:none;
+    outline:none;
+}
+
+/* dropdown arrow custom */
+.form-card select{
+    background-image:
+    linear-gradient(45deg, transparent 50%, #22c55e 50%),
+    linear-gradient(135deg, #22c55e 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(50% - 3px),
+        calc(100% - 14px) calc(50% - 3px);
+    background-size:6px 6px, 6px 6px;
+    background-repeat:no-repeat;
+}
+
+/* button */
+.btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(120deg,#22c55e,#4ade80,#22c55e);
+    background-size:200% 200%;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    animation:shine 4s linear infinite;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 25px #22c55e66;
+}
+
+@keyframes shine{
+    0%{ background-position:0% }
+    100%{ background-position:200% }
+}
+
+/* timer */
+.timer{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:25px;
+    color:#4ade80;
+}
+
+/* quiz card */
+.qcard{
+    padding:28px;
+    margin-bottom:22px;
+    transition:0.3s;
+}
+
+.qcard:hover{
+    transform:translateY(-6px) scale(1.02);
+}
+
+/* options */
+.option{
+    display:block;
+    background:#020617;
+    padding:14px;
+    margin-top:12px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+.option:hover{
+    background:#0f172a;
+    transform:translateX(6px);
+}
+
+/* result */
+.result{
+    padding:22px;
+    margin-top:18px;
+}
+
+/* ===== SCORE CIRCLE ===== */
+
+.scoreCircle{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    conic-gradient(
+        #22c55e calc(var(--score)*1%),
+        #1e293b 0%
+    );
+    box-shadow:0 0 35px #22c55e55;
+    margin:auto;
+    margin-bottom:25px;
+}
+
+.scoreCircle span{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:#020617;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    font-weight:600;
+}
+
+/* ===== CURSOR GLOW ===== */
+
+.cursorGlow{
+    position:fixed;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:radial-gradient(circle,#22c55e55,transparent 70%);
+    pointer-events:none;
+    mix-blend-mode:screen;
+    transform:translate(-50%,-50%);
+    z-index:999;
+}

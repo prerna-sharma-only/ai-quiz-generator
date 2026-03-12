@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🌐 GLOBAL FUTURISTIC BACKGROUND -->
+<div class="neural-bg"></div>
+
+<div class="symbol q1">?</div>
+<div class="symbol q2">π</div>
+<div class="symbol q3">∑</div>
+<div class="symbol q4">λ</div>
+
+<div class="wrapper">
+
+<h1 class="heading">Quiz</h1>
+
+<div class="timer" id="timer"></div>
+
+<div id="quizBox"></div>
+
+<button class="btn" onclick="submitQuiz()">Submit</button>
+
+</div>
+
+<script>
+
+let quizData = JSON.parse(localStorage.quiz)
+let userAnswers = []
+
+quizData.forEach((q,i)=>{
+
+    let div = document.createElement("div")
+    div.className="qcard"
+
+    let html = `<h3>${i+1}. ${q.question}</h3>`
+
+    q.options.forEach(opt=>{
+        html += `
+        <label class="option">
+        <input type="radio" name="q${i}" value="${opt}">
+        ${opt}
+        </label>`
+    })
+
+    div.innerHTML = html
+    quizBox.appendChild(div)
+})
+
+document.addEventListener("change",(e)=>{
+    if(e.target.type==="radio"){
+        let i = e.target.name.replace("q","")
+        userAnswers[i] = e.target.value
+    }
+})
+
+let t = localStorage.time
+
+setInterval(()=>{
+    t--
+    timer.innerText = "Time Left: "+t
+    if(t<=0) submitQuiz()
+},1000)
+
+function submitQuiz(){
+
+    let report = []
+    let correct = 0
+
+    quizData.forEach((q,i)=>{
+
+        let obj = {
+            question: q.question,
+            correct: q.answer,
+            attempted: userAnswers[i] || "Not Attempted"
+        }
+
+        if(userAnswers[i] === q.answer){
+            correct++
+            obj.status = "correct"
+        }else{
+            obj.status = "wrong"
+        }
+
+        report.push(obj)
+    })
+
+    localStorage.report = JSON.stringify(report)
+    localStorage.correct = correct
+    localStorage.total = quizData.length
+
+    location.href="result.html"
+}
+
+</script>
+
+<!-- ⭐ CURSOR GLOW -->
+<script>
+let glow = document.createElement("div")
+glow.className = "cursorGlow"
+document.body.appendChild(glow)
+
+document.addEventListener("mousemove",e=>{
+    glow.style.left = e.clientX+"px"
+    glow.style.top = e.clientY+"px"
+})
+</script>
+
+</body>
+</html>
