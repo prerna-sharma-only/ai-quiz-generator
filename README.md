@@ -1,26 +1,31 @@
 <div align="center">
 
-#  🤖 AI Quiz Generator
-⚡ Generate Smart MCQ Quizzes Instantly with AI
+# 🤖 AI Quiz Generator
 
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=24&duration=3000&pause=1000&color=00BFFF&center=true&vCenter=true&width=700&lines=Generate+Smart+MCQ+Quizzes+Instantly+with+AI;Create+Quizzes+on+Any+Topic+in+Real-Time;Powered+by+Groq+LLM+⚡" alt="Typing SVG" />
 
+<br/>
 
+<p align="center">
+  <a href="https://ai-quiz-generator-t73s.onrender.com">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-00BFFF?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+</p>
 
-🔗 Live Demo
-👉 https://ai-quiz-generator-t73s.onrender.com
+---
 
-<br>
+## ⚡ Tech Stack
 
-<img src="https://img.shields.io/badge/Node.js-Backend-green?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Express.js-Server-black?style=for-the-badge" />
-<img src="https://img.shields.io/badge/JavaScript-Frontend-yellow?style=for-the-badge" />
-<img src="https://img.shields.io/badge/AI-Groq%20LLM-blue?style=for-the-badge" />
+<p align="center">
 
-<br><br>
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Frontend-0A66C2?style=for-the-badge&logo=html5&logoColor=white"/>
+<img src="https://img.shields.io/badge/Backend-16A34A?style=for-the-badge&logo=serverless&logoColor=white"/>
+<img src="https://img.shields.io/badge/Groq_LLM-FF6B00?style=for-the-badge&logo=ai&logoColor=white"/>
 
-🚀 **Generate quizzes on any topic using AI in real-time**
-
-</div>
+</p>
 
 ---
 
