@@ -1,6 +1,6 @@
 <div align="center">
 
-🤖 AI Quiz Generator
+#  🤖 AI Quiz Generator
 ⚡ Generate Smart MCQ Quizzes Instantly with AI
 
 
